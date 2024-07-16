@@ -2,14 +2,11 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include <avr/io.h>
 #include <util/delay.h>
 
-#include "328pb/I2C.h"
-#include "328pb/UART.h"
+#include "I2C.h"
+#include "UART.h"
 #include "mpu6050/MPU6050.h"
-
-#define GRAVITY 9.81
 
 double AccelerationToDegrees(int16_t ay) {
     // Convert raw accelerometer value to 'g' units

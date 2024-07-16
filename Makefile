@@ -1,26 +1,31 @@
 # Compiler and linker
 CC = avr-gcc
 OBJCOPY = avr-objcopy
+AVRDUDE = avrdude
 
 # Microcontroller specific settings
 MCU = atmega328pb
 F_CPU = 16000000UL
 BAUD = 9600
 
+# Programmer settings
+PROGRAMMER = xplainedmini
+
+# Include directories
 INCLUDE_DIRS = -Ilib/EmbeddedCommon/drivers
 
 # Source directories under the root directories
 LIB_SRC_DIRS := \
-		lib/EmbeddedCommon/drivers/328pb \
-		lib/EmbeddedCommon/drivers/mpu6050
+	lib/EmbeddedCommon/drivers/328pb \
+	lib/EmbeddedCommon/drivers/mpu6050
 
 PROJECT_SRC_DIRS := \
-		src
+	src
 
 # Combine all source directories
 SRC_DIRS := \
-		${LIB_SRC_DIRS} \
-		${PROJECT_SRC_DIRS}
+	$(LIB_SRC_DIRS) \
+	$(PROJECT_SRC_DIRS)
 
 # Output directory
 BUILD_DIR = build
@@ -61,12 +66,13 @@ $(HEX): $(TARGET)
 # Compile C source files
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiling $<"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 # Flash target to program the microcontroller
 flash: $(HEX)
-	$(AVRDUDE) -p $(MCU) -c $(PROGRAMMER) -U flash:w:$<
+	@echo "Flashing $(HEX) to device"
+	@$(AVRDUDE) -p $(MCU) -c $(PROGRAMMER) -U flash:w:$(HEX)
 
 # Clean build files
 clean:
