@@ -7,12 +7,12 @@ MCU = atmega328pb
 F_CPU = 16000000UL
 BAUD = 9600
 
-INCLUDE_DIRS = -Ilib/common/drivers
+INCLUDE_DIRS = -Ilib/EmbeddedCommon/drivers
 
 # Source directories under the root directories
 LIB_SRC_DIRS := \
-		lib/common/drivers/328pb \
-		lib/common/drivers/mpu6050
+		lib/EmbeddedCommon/drivers/328pb \
+		lib/EmbeddedCommon/drivers/mpu6050
 
 PROJECT_SRC_DIRS := \
 		src

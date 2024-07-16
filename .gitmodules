@@ -1,0 +1,3 @@
+[submodule "lib/EmbeddedCommon"]
+	path = lib/EmbeddedCommon
+	url = https://github.com/leoallesch/EmbeddedCommon

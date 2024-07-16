@@ -1,0 +1,24 @@
+{
+    "env": {
+        "avrPath": "C:/Program Files (x86)/Atmel/Studio/7.0/toolchain/avr8/avr8-gnu-toolchain/avr/include",
+        "avrIncludePath": "${env:avrPath}/avr"
+    },
+    "configurations": [
+        {
+            "name": "328PB",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:avrPath}/**",
+                "${avrIncludePath}/**"
+            ],
+            "defines": [
+                "__AVR_ATmega328PB__",
+                "F_CPU=16000000UL"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
